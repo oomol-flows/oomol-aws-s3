@@ -1,0 +1,22 @@
+executor:
+  name: nodejs
+  options:
+    entry: main.ts
+inputs_def:
+  - handle: s3Client
+    json_schema:
+      contentMediaType: oomol/var
+  - handle: bucket
+    json_schema:
+      type: string
+  - handle: prefix
+    json_schema:
+      type: string
+outputs_def:
+  - handle: deletedKeys
+    json_schema:
+      type: array
+      items:
+        type: string
+title: Batch delete by prefix
+icon: ":carbon:trash-can:"

@@ -1,0 +1,24 @@
+executor:
+  name: nodejs
+  options:
+    entry: main.ts
+inputs_def:
+  - handle: s3Client
+    json_schema:
+      contentMediaType: oomol/var
+  - handle: bucket
+    json_schema:
+      type: string
+  - handle: key
+    json_schema:
+      type: string
+  - handle: saveAs
+    json_schema:
+      type: string
+      ui:widget: save
+outputs_def:
+  - handle: output
+    json_schema:
+      {}
+title: Download file
+icon: ":carbon:download:"
