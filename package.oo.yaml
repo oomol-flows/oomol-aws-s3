@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 0.0.2
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -14,3 +14,4 @@ description: Provides S3 object operations such as upload, delete, and download
   based on AWS S3 SDK
 displayName: AWS S3
 is_template: true
+releaseNotes: support oomol-chat

@@ -1,0 +1,39 @@
+{
+  "nodes": {
+    "create-s3-client#1": {
+      "contentWidth": 405.4921875,
+      "rfNode": {
+        "position": {
+          "x": 116.7642111966909,
+          "y": -50.64506450359658
+        }
+      }
+    },
+    "batch-download-by-prefix#1": {
+      "rfNode": {
+        "position": {
+          "x": 585.9376869168311,
+          "y": 226.66292904166392
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -420.9508878850511,
+          "y": 100
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1056.9333231213059,
+          "y": 194.4351676351966
+        }
+      }
+    }
+  }
+}

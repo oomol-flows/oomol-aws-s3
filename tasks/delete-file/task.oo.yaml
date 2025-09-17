@@ -18,3 +18,4 @@ outputs_def:
       type: string
 title: Delete file
 icon: ":carbon:trash-can:"
+private: true

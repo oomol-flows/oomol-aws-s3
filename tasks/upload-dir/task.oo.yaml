@@ -22,3 +22,4 @@ outputs_def:
       {}
 title: Upload dir
 icon: ":carbon:upload:"
+private: true

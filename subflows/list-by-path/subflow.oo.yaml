@@ -1,0 +1,81 @@
+nodes:
+  - node_id: create-s3-client#1
+    title: "Create s3 client #1"
+    inputs_from:
+      - handle: region
+        from_flow:
+          - input_handle: region
+      - handle: accessKey
+        from_flow:
+          - input_handle: accessKey
+      - handle: secretAccessKey
+        from_flow:
+          - input_handle: secretAccessKey
+      - handle: endpoint
+        value: null
+        from_flow:
+          - input_handle: endpoint
+    task: self::create-s3-client
+  - node_id: list-by-path#1
+    title: "List by path #1"
+    inputs_from:
+      - handle: s3Client
+        from_node:
+          - node_id: create-s3-client#1
+            output_handle: client
+      - handle: bucket
+        from_flow:
+          - input_handle: bucket
+      - handle: prefix
+        value: null
+        from_flow:
+          - input_handle: prefix
+    task: self::list-by-path
+inputs_def:
+  - handle: region
+    json_schema:
+      type: string
+    nullable: false
+    executor_name: nodejs
+  - handle: accessKey
+    json_schema:
+      contentMediaType: oomol/secret
+      type: string
+    nullable: false
+    executor_name: nodejs
+  - handle: secretAccessKey
+    json_schema:
+      contentMediaType: oomol/secret
+      type: string
+    nullable: false
+    executor_name: nodejs
+  - handle: endpoint
+    json_schema:
+      type: string
+    nullable: true
+    value:
+    executor_name: nodejs
+  - handle: bucket
+    json_schema:
+      type: string
+    nullable: false
+    executor_name: nodejs
+  - handle: prefix
+    json_schema:
+      type: string
+    nullable: true
+    value:
+    executor_name: nodejs
+outputs_def:
+  - handle: output
+    json_schema:
+      type: array
+      items:
+        type: string
+    nullable: false
+    executor_name: nodejs
+outputs_from:
+  - handle: output
+    from_node:
+      - node_id: list-by-path#1
+        output_handle: output

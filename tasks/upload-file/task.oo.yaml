@@ -23,3 +23,4 @@ outputs_def:
       type: string
 title: Upload file
 icon: ":carbon:upload:"
+private: true

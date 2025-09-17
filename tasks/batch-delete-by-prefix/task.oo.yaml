@@ -20,3 +20,4 @@ outputs_def:
         type: string
 title: Batch delete by prefix
 icon: ":carbon:trash-can:"
+private: true

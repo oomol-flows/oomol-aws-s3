@@ -22,3 +22,4 @@ outputs_def:
       {}
 title: Batch download by prefix
 icon: ":carbon:download:"
+private: true

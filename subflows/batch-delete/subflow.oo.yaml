@@ -1,0 +1,86 @@
+nodes:
+  - node_id: create-s3-client#1
+    title: "Create s3 client #1"
+    inputs_from:
+      - handle: region
+        value: auto
+        from_flow:
+          - input_handle: region
+      - handle: accessKey
+        value: ${{OO_SECRET:Custom,oomol-r2-dev-ak-sk,ak}}
+        from_flow:
+          - input_handle: accessKey
+      - handle: secretAccessKey
+        value: ${{OO_SECRET:Custom,oomol-r2-dev-ak-sk,sk}}
+        from_flow:
+          - input_handle: secretAccessKey
+      - handle: endpoint
+        value: https://c3557946c7b4aaf936d1a1a78f8a1901.r2.cloudflarestorage.com
+        from_flow:
+          - input_handle: endpoint
+    task: self::create-s3-client
+  - node_id: batch-delete-by-prefix#1
+    title: "Batch delete by prefix #1"
+    inputs_from:
+      - handle: s3Client
+        from_node:
+          - node_id: create-s3-client#1
+            output_handle: client
+      - handle: bucket
+        from_flow:
+          - input_handle: bucket
+      - handle: prefix
+        from_flow:
+          - input_handle: prefix
+    task: self::batch-delete-by-prefix
+title: batch delete by prefix
+inputs_def:
+  - handle: region
+    json_schema:
+      type: string
+    nullable: false
+    value: auto
+    executor_name: nodejs
+  - handle: accessKey
+    json_schema:
+      contentMediaType: oomol/secret
+      type: string
+    nullable: false
+    value: ${{OO_SECRET:Custom,oomol-r2-dev-ak-sk,ak}}
+    executor_name: nodejs
+  - handle: secretAccessKey
+    json_schema:
+      contentMediaType: oomol/secret
+      type: string
+    nullable: false
+    value: ${{OO_SECRET:Custom,oomol-r2-dev-ak-sk,sk}}
+    executor_name: nodejs
+  - handle: endpoint
+    json_schema:
+      type: string
+    nullable: true
+    value: https://c3557946c7b4aaf936d1a1a78f8a1901.r2.cloudflarestorage.com
+    executor_name: nodejs
+  - handle: bucket
+    json_schema:
+      type: string
+    nullable: false
+    executor_name: nodejs
+  - handle: prefix
+    json_schema:
+      type: string
+    nullable: false
+    executor_name: nodejs
+outputs_def:
+  - handle: deletedKeys
+    json_schema:
+      type: array
+      items:
+        type: string
+    nullable: false
+    executor_name: nodejs
+outputs_from:
+  - handle: deletedKeys
+    from_node:
+      - node_id: batch-delete-by-prefix#1
+        output_handle: deletedKeys

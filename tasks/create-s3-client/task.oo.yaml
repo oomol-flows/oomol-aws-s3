@@ -25,3 +25,4 @@ outputs_def:
       contentMediaType: oomol/var
 title: Create s3 client
 icon: ":simple-icons:amazons3:"
+private: true

@@ -1,0 +1,38 @@
+{
+  "nodes": {
+    "create-s3-client#1": {
+      "rfNode": {
+        "position": {
+          "x": 59.94330609604327,
+          "y": -91.18961660114952
+        }
+      }
+    },
+    "list-by-path#1": {
+      "rfNode": {
+        "position": {
+          "x": 544,
+          "y": 124
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -424.09671906445647,
+          "y": 124
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1008.4902325553604,
+          "y": 94.66079195820076
+        }
+      }
+    }
+  }
+}

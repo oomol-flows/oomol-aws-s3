@@ -22,3 +22,4 @@ outputs_def:
         type: string
 title: List by path
 icon: ":carbon:list:"
+private: true
